@@ -1,0 +1,65 @@
+name: 📄 New blog post - draft must be submitted 2 weeks in advance of requested publication date.
+description: "Template for requesting new blog posts - draft must be submitted 2 weeks in advance of requested publication date."
+title: "YYYY-MM-DD - Blog post title"
+labels: "blog"
+body:
+- type: checkboxes
+  validations:
+    required: true
+  attributes:
+    label: Blog editorial process checklist
+    description: This editorial process checklist is the source of truth for the blog publication process. Parentheses indicate who is responsible for completing that step. The author/submitter’s involvement may be needed at any point during this process.
+    options:
+      - label: Submit draft (author/submitter) 
+      - label: Review draft & triage (blog team)
+      - label: Content team reviews & edits (editors)
+      - label: Team stakeholders approval (sponsor/approver)
+      - label: Add to GitHub Blog calendar (blog team)
+      - label: Communications review (comms reviewer)
+      - label: Copy edit (blog team)
+      - label: Stage post in WordPress (blog team)
+      - label: Post preview approval (author/submitter)
+      - label: Schedule publication in WordPress (blog team)
+      - label: Open social media issue (blog team)
+- type: textarea
+  validations:
+    required: true
+  attributes:
+    label: Requested publish date
+    description: What is your requested publish date? Is this flexible? Requested publish date must be **at least 2 weeks out** from submitting a draft.
+    placeholder: ex. 5/10/23, not flexible because of XYZ launch
+- type: textarea
+  validations:
+    required: true
+  attributes:
+    label: Stakeholders, reviewers, and editors
+    value: |
+      Credited author (one recommended, two max) - @username 
+      Sponsor/Approver - @username
+      Informed - @username
+      **Below fields to be filled out by blog team:**
+      Comms reviewer - @username
+      PMM reviewer - @username
+      Eng reviewer - @username
+      Product design reviewer - @username
+      Editor - @username
+      Copy editor - @username
+    description: List @username(s) for each of the relevant roles.   
+- type: textarea
+  validations:
+    required: true
+  attributes:
+    label: Goals
+    description: Why do you want to post on the blog? What are you trying to communicate? What audience are you targeting?
+- type: textarea
+  validations:
+    required: true
+  attributes:
+    label: Draft link
+    description: Please create blog post draft link by making a copy of the blog template.
+- type: textarea
+  validations:
+    required: false
+  attributes:
+    label: Related issues & additional info
+    description: Are there related issues/docs to this request? Please add links below. Is there anything else we should know?
