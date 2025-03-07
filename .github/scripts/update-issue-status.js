@@ -73,29 +73,29 @@ const ORG = "github"; // Organization that owns the project
     // Determine status value based on completed checklist items
     let statusValue;
     if (consecutiveCount >= 11) {
-      statusValue = "Ready for promotion";
+      statusValue = "11. Ready for promotion";
     } else if (consecutiveCount >= 10) {
-      statusValue = "Scheduled to publish";
+      statusValue = "10. Scheduled to publish";
     } else if (consecutiveCount >= 9) {
-      statusValue = "Ready to schedule";
+      statusValue = "9. Ready to schedule";
     } else if (consecutiveCount >= 8) {
-      statusValue = "Preview approval";
+      statusValue = "8. Preview approval";
     } else if (consecutiveCount >= 7) {
-      statusValue = "Ready for staging";
+      statusValue = "7. Ready for staging";
     } else if (consecutiveCount >= 6) {
-      statusValue = "Copyedit";
+      statusValue = "6. Copyedit";
     } else if (consecutiveCount >= 5) {
-      statusValue = "Comms review";
+      statusValue = "5. Comms review";
     } else if (consecutiveCount >= 4) {
-      statusValue = "Ready for calendar";
+      statusValue = "4. Ready for calendar";
     } else if (consecutiveCount >= 3) {
-      statusValue = "Team and stakeholder reviews";
+      statusValue = "3. Team and stakeholder reviews";
     } else if (consecutiveCount >= 2) {
-      statusValue = "Content team reviews";
+      statusValue = "2. Content team reviews";
     } else if (consecutiveCount >= 1) {
-      statusValue = "Draft submitted";
+      statusValue = "1. Draft submitted";
     } else {
-      statusValue = "Needs draft";
+      statusValue = "0. Needs draft";
     }
 
     // Step 1: Get the project ID
