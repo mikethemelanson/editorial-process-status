@@ -3,7 +3,7 @@ import { context } from "@actions/github";
 
 const graphqlWithAuth = graphql.defaults({
   headers: {
-    authorization: `token ${process.env.GITHUB_TOKEN}`,
+    authorization: `token ${process.env.PROJECT_ACCESS_TOKEN}`,
   },
 });
 
