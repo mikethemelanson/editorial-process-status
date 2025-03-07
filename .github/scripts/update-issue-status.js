@@ -12,7 +12,7 @@ const owner = context.repo.owner;
 const repo = context.repo.repo;
 
 // GitHub Project constants - UPDATED FOR REPOSITORY PROJECT
-const PROJECT_NUMBER = 21285; // Update this to your actual project number
+const PROJECT_NUMBER = 3; // Update this to your actual project number
 
 (async () => {
   try {
