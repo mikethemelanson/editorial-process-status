@@ -1,0 +1,35 @@
+name: Update Issue Status in Project
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+  repository-projects: write
+  organization-projects: write
+  contents: read
+
+jobs:
+  update-status:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: npm install @octokit/graphql @octokit/rest @actions/github
+      
+    - name: Create package.json for ESM
+      run: |
+        echo '{"type":"module"}' > package.json
+        
+    - name: Update Issue Status in Project
+      env:
+        GITHUB_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+      run: node .github/scripts/update-issue-status.js
