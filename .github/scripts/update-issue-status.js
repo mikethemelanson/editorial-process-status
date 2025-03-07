@@ -11,9 +11,8 @@ const issueNumber = context.payload.issue.number;
 const owner = context.repo.owner;
 const repo = context.repo.repo;
 
-// GitHub Project constants
-const PROJECT_NUMBER = 21285;
-const ORG = "github"; // Organization that owns the project
+// GitHub Project constants - UPDATED FOR REPOSITORY PROJECT
+const PROJECT_NUMBER = 21285; // Update this to your actual project number
 
 (async () => {
   try {
@@ -98,10 +97,10 @@ const ORG = "github"; // Organization that owns the project
       statusValue = "0. Needs draft";
     }
 
-    // Step 1: Get the project ID
+    // Step 1: Get the project ID - UPDATED FOR REPOSITORY PROJECT
     const projectData = await graphqlWithAuth(`
       query {
-        organization(login: "${ORG}") {
+        user(login: "${owner}") {
           projectV2(number: ${PROJECT_NUMBER}) {
             id
             fields(first: 20) {
@@ -121,7 +120,7 @@ const ORG = "github"; // Organization that owns the project
       }
     `);
 
-    const project = projectData.organization.projectV2;
+    const project = projectData.user.projectV2;
     console.log(`Found project with ID: ${project.id}`);
 
     // Step 2: Find the status field and the appropriate option ID
@@ -130,9 +129,12 @@ const ORG = "github"; // Organization that owns the project
     );
 
     if (!statusField) {
+      console.log("Available fields:", project.fields.nodes.map(field => field.name));
       throw new Error("Status field not found in the project");
     }
 
+    console.log("Status field options:", statusField.options.map(opt => opt.name));
+    
     const statusOption = statusField.options.find(
       option => option.name === statusValue
     );
@@ -144,7 +146,7 @@ const ORG = "github"; // Organization that owns the project
     // Step 3: Get the item ID for this issue in the project
     const itemData = await graphqlWithAuth(`
       query {
-        organization(login: "${ORG}") {
+        user(login: "${owner}") {
           projectV2(number: ${PROJECT_NUMBER}) {
             items(first: 100) {
               nodes {
@@ -167,7 +169,7 @@ const ORG = "github"; // Organization that owns the project
       }
     `);
 
-    const projectItem = itemData.organization.projectV2.items.nodes.find(
+    const projectItem = itemData.user.projectV2.items.nodes.find(
       item => 
         item.content?.number === issueNumber && 
         item.content?.repository?.name === repo &&
