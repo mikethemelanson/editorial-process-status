@@ -31,5 +31,5 @@ jobs:
         
     - name: Update Issue Status in Project
       env:
-        GITHUB_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.status-update-token }}
       run: node .github/scripts/update-issue-status.js
